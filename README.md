@@ -14,7 +14,7 @@ O **The Food Manager** é um gerenciador de estoques de alimentos desenvolvido p
 
 ---
 
-### 🚀 O que esperar da Versão 0.2
+###  O que esperar da Versão 0.2
 Como estudante de Engenharia de Computação, entendo que o projeto precisa de uma estrutura mais robusta. A versão 0.2 focará em:
 *   **Refatoração para POO:** Migração total das funções para Programação Orientada a Objetos (Classes), facilitando a manutenção e escala.
 *   **Performance:** Otimização da estrutura de dados para maior velocidade de resposta.
