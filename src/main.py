@@ -1,5 +1,5 @@
 from pathlib import Path
-from modules import add_item, remove_item, list_item
+from modules import add_item, remove_item, list_item, update_item
 import os 
 import json
 import sys
@@ -95,6 +95,8 @@ def interface():
             add_item.add_item()
         elif opcao == "2":
             remove_item.remove_itens()
+        elif opcao == "3":
+            update_item.update_item()
         elif opcao == "4":
             list_item.list_all()
         elif opcao == "0":

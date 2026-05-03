@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nome": "Arroz 5kg",
-        "quantidade": 0
+        "quantidade": 100
     },
     {
         "id": 2,
@@ -42,6 +42,11 @@
     {
         "id": 9,
         "nome": "Leite Integral 1L",
+        "quantidade": 0
+    },
+    {
+        "id": 10,
+        "nome": "Manteiga com Sal 200g",
         "quantidade": 0
     },
     {
@@ -243,15 +248,5 @@
         "id": 50,
         "nome": "Laranja Pera - Saco 2kg",
         "quantidade": 0
-    },
-    {
-        "id": 50,
-        "nome": "maça",
-        "quantidade": 90
-    },
-    {
-        "id": 51,
-        "nome": "uva",
-        "quantidade": 31
     }
 ]

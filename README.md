@@ -1,58 +1,66 @@
-# The Food Manager
+#  The Food Manager
+**Versão 0.1.4** | Lançamento Inicial (CLI)
 
-**Versão 0.1.3** | Lançamento Inicial (CLI)
+O **The Food Manager** é um gerenciador de estoques de alimentos desenvolvido para simplificar o controle de inventário. Esta versão inicial estabelece a lógica central do sistema via terminal, priorizando a organização do código e o funcionamento das regras de negócio antes da implementação de interfaces gráficas.
 
-# Nota de Atualização: Adicionada função de listagem de itens com CLI aprimorada.
+---
 
-Gerenciador de estoques de alimentos desenvolvido para simplificar o controle de inventário. Esta versão inicial estabelece a lógica central do sistema via terminal, priorizando a organização do código e o funcionamento das regras de negócio antes da implementação de interfaces gráficas.
+### Notas de Atualização (v0.1.4)
+> **STATUS: CRUD COMPLETO**
+> A atualização 0.1.4 consolidou o sistema CRUD por completo, permitindo agora: **C**criar (Create), **R**ler/Listar (Read), **U** atualizar (Update) e **D**deletar/Remover (Delete). 
 
-## Sobre o Projeto
+*   **Novidade:** Implementada a função de atualização de nome e quantidade de itens com interface de confirmação.
+*   **Ciclo de Versões:** Continuaremos com os "packs" de versões **0.1.x** para pequenos ajustes e polimentos antes de partirmos para a grande reestruturação da 0.2.
 
-O objetivo do The Food Manager é fornecer uma ferramenta leve e direta para o controle de suprimentos. O programa opera inteiramente via linha de comando nesta fase, servindo como a fundação para uma futura plataforma multiplataforma.
+---
 
-### Funcionalidades v0.1.3
-* **Cadastro de Itens:** Adicionar novos alimentos ao sistema com quantidade inicial.
-[#CONCLUÍDO]
+### 🚀 O que esperar da Versão 0.2
+Como estudante de Engenharia de Computação, entendo que o projeto precisa de uma estrutura mais robusta. A versão 0.2 focará em:
+*   **Refatoração para POO:** Migração total das funções para Programação Orientada a Objetos (Classes), facilitando a manutenção e escala.
+*   **Performance:** Otimização da estrutura de dados para maior velocidade de resposta.
+*   **Nova Estrutura:** Melhoria no design do código e preparação para uma futura UI (User Interface) nas versões 0.2 ou 0.3.
 
-* **Remoção:** Excluir itens do registro de estoque.
-[#CONCLUÍDO]
+---
 
-* **Ajuste de Saldo:** Funções específicas para aumentar ou diminuir a quantidade de itens.
+### ✅ Funcionalidades Atuais
+*   **Cadastro de Itens:** Adicionar novos alimentos com quantidade inicial. `[CONCLUÍDO]`
+*   **Remoção:** Excluir registros do estoque permanentemente. `[CONCLUÍDO]`
+*   **Ajuste de Saldo:** Funções para aumentar ou diminuir a quantidade de itens. `[CONCLUÍDO]`
+*   **Listagem:** Visualização formatada de todos os alimentos e seus respectivos status. `[CONCLUÍDO]`
+*   **Update:** Alteração precisa de nomes e quantidades com busca por ID/Nome. `[CONCLUÍDO]`
 
-* **Listagem:** Visualização completa de todos os alimentos e seus respectivos status.
-[#CONCLUIDO]
-## Desenvolvimento e Estabilidade
+---
 
-Nesta fase de lançamento, o foco total está na estabilidade das funções básicas (CRUD) e na qualidade da lógica de programação. 
+### Desenvolvimento e Estabilidade
+Nesta fase, o foco total está na qualidade da lógica de programação.
+*   **Interface:** CLI (Command Line Interface).
+*   **Persistência:** Manipulação de dados via arquivos JSON.
+*   **Manutenção:** Versões incrementais focadas em estabilidade e correções pontuais.
 
-* **Interface:** Command Line Interface (CLI).
-* **Manutenção:** Versões incrementais (como a 0.1.1) serão lançadas para correções de bugs ou melhorias pontuais de desempenho.
+---
 
-## Planejamento Futuro (Roadmap)
-
-O projeto será transformado em uma plataforma open source com o objetivo de alcançar as seguintes metas:
-
-- [ ] **Expansão de Plataforma:** Versões para Web, Desktop (Windows/Linux) e Mobile (Android).
+### Planejamento Futuro (Roadmap)
+- [ ] **Persistência em SQL:** Migração do JSON para banco de dados relacional para maior integridade.
+- [ ] **Expansão de Plataforma:** Versões para Web, Desktop e Mobile.
 - [ ] **Exportação de Dados:** Geração de relatórios de estoque em formato PDF.
-- [ ] **Identificação Visual:** Suporte para imagens dos itens para facilitar a gestão.
-- [ ] **Abertura para Comunidade:** Código aberto para contribuições de outros desenvolvedores.
+- [ ] **Identificação Visual:** Suporte para imagens dos itens.
+- [ ] **Open Source:** Abertura do código para contribuições da comunidade.
 
-## Estrutura Inicial (Planejada)
+---
+
+### 📂 Estrutura de Pastas
 ```text
 food_manager/
 │── main.py
 │── data/
-│   └── estoque.json (ou .csv)
+│   └── initial_data.json
 │── modules/
-│   ├── add_item
-│   ├── remove_item
-│   ├── update_item
-│   └── list_items
+│   ├── add_item.py
+│   ├── remove_item.py
+│   ├── update_item.py
+│   └── list_items.py
 │── README.md
+```
 
 ---
-#OpenSource #SoftwareDevelopment #FoodManager #BuildInPublic
-
-
-
-
+#OpenSource #SoftwareDevelopment #FoodManager #BuildInPublic #Python #DeveloperLife
