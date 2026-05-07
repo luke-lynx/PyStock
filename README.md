@@ -1,5 +1,10 @@
 # PyStock
 
+<p align="center">
+  <img src="./assets/arquivo-escolhido.png" width="500" alt="AXON Automotive Manager Logo"/>
+</p>
+
+
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version 0.1.4](https://img.shields.io/badge/version-0.1.4-brightgreen)]()
