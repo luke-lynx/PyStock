@@ -10,310 +10,310 @@
 [![Version 0.1.4](https://img.shields.io/badge/version-0.1.4-brightgreen)]()
 [![Status: Active](https://img.shields.io/badge/status-active-success)]()
 
-**PyStock** é um sistema robusto de gerenciamento de estoque de alimentos desenvolvido em Python. Oferece uma solução prática via CLI (Command Line Interface) para controlar inventário com funcionalidades completas de CRUD, interface intuitiva e persistência de dados em JSON.
+**PyStock** is a robust food inventory management system built in Python. It offers a practical CLI (Command Line Interface) solution for inventory control with full CRUD functionality, an intuitive interface, and JSON data persistence.
 
-## Visão Geral
+## Overview
 
-O PyStock foi desenvolvido para simplificar o controle de inventário de alimentos, permitindo que usuários gerenciem seu estoque de forma eficiente através de um terminal. Com uma arquitetura modular e funcionalidades bem definidas, o projeto estabelece a lógica central para futuras expansões em versões posteriores.
+PyStock was developed to simplify food inventory control, allowing users to manage their stock efficiently through a terminal. With a modular architecture and well-defined features, the project establishes the core logic for future expansions in later versions.
 
-**Status:** CRUD Completo | **Versão Atual:** 0.1.4 | **Foco:** Estabilidade & Qualidade
+**Status:** Full CRUD | **Current Version:** 0.1.4 | **Focus:** Stability & Quality
 
 ---
 
-## Começando Rápido
+## Quick Start
 
-### Pré-requisitos
-- Python 3.8 ou superior
-- Sistema operacional: Windows, macOS ou Linux
+### Prerequisites
+- Python 3.8 or higher
+- Operating system: Windows, macOS, or Linux
 
-### Instalação
+### Installation
 
 ```bash
-# Clone o repositório
+# Clone the repository
 git clone https://github.com/luke-lynx/pystock.git
 cd pystock
 
-# Nenhuma dependência externa necessária
-# O projeto utiliza apenas bibliotecas padrão do Python
+# No external dependencies required
+# The project uses only Python standard libraries
 ```
 
-### Primeiro Uso
+### First Use
 
 ```bash
-# Na raiz do projeto, execute:
+# From the project root, run:
 python src/main.py
 
-# Siga as instruções:
-# 1. Confirme a criação do arquivo de dados
-# 2. Escolha se deseja adicionar 50 itens padrão
-# 3. Use o menu principal para gerenciar seu estoque
+# Follow the instructions:
+# 1. Confirm the creation of the data file
+# 2. Choose whether to add 50 default items
+# 3. Use the main menu to manage your inventory
 ```
 
 ---
 
-## Funcionalidades
+## Features
 
-| Funcionalidade | Status | Descrição |
+| Feature | Status | Description |
 |---|---|---|
-| Cadastro de Itens | ✓ Concluído | Adicionar novos alimentos com quantidade inicial |
-| Listagem de Estoque | ✓ Concluído | Visualizar todos os itens com status (OK, BAIXO, ESGOTADO) |
-| Remoção de Itens | ✓ Concluído | Deletar registros permanentemente do estoque |
-| Atualização de Dados | ✓ Concluído | Alterar nome e quantidade com busca por ID ou Nome |
-| Interface CLI | ✓ Concluído | Menu intuitivo e responsivo |
+| Item Registration | ✓ Done | Add new food items with initial quantity |
+| Inventory Listing | ✓ Done | View all items with status (OK, LOW, OUT OF STOCK) |
+| Item Removal | ✓ Done | Permanently delete records from inventory |
+| Data Update | ✓ Done | Change name and quantity by searching via ID or Name |
+| CLI Interface | ✓ Done | Intuitive and responsive menu |
 
 ---
 
-## Guia de Uso
+## Usage Guide
 
-### 1. Adicionar Item
-
-```
-Menu Principal → Opção 1 (Adicionar Alimento)
-├─ Digite o nome do alimento
-├─ Digite a quantidade inicial
-└─ Confirme os dados
-```
-
-**Funcionalidades:**
-- Validação de entrada (quantidade deve ser número não-negativo)
-- Confirmação antes de adicionar
-- Geração automática de ID
-- Persistência imediata em JSON
-
-### 2. Listar Estoque
+### 1. Add Item
 
 ```
-Menu Principal → Opção 4 (Listar Estoque)
+Main Menu → Option 1 (Add Food)
+├─ Enter the food name
+├─ Enter the initial quantity
+└─ Confirm the data
 ```
 
-**Informações Exibidas:**
-- ID do item
-- Nome do alimento
-- Quantidade em estoque
-- Categoria (padrão: "Geral")
+**Features:**
+- Input validation (quantity must be a non-negative number)
+- Confirmation before adding
+- Automatic ID generation
+- Immediate JSON persistence
+
+### 2. List Inventory
+
+```
+Main Menu → Option 4 (List Inventory)
+```
+
+**Displayed Information:**
+- Item ID
+- Food name
+- Stock quantity
+- Category (default: "General")
 - Status:
-  - **OK**: Quantidade > 5 unidades
-  - **BAIXO**: Quantidade entre 1-5 unidades
-  - **ESGOTADO**: Quantidade = 0
+  - **OK**: Quantity > 5 units
+  - **LOW**: Quantity between 1–5 units
+  - **OUT OF STOCK**: Quantity = 0
 
-### 3. Remover Item
-
-```
-Menu Principal → Opção 2 (Remover Alimento)
-├─ Escolha: buscar por ID ou Nome
-├─ Confirme o item encontrado
-└─ Confirme a remoção
-```
-
-### 4. Atualizar Item
+### 3. Remove Item
 
 ```
-Menu Principal → Opção 3 (Alterar Alimento)
-├─ Busque pelo ID
-├─ Altere nome e/ou quantidade
-├─ Revise as mudanças
-└─ Confirme e grave
+Main Menu → Option 2 (Remove Food)
+├─ Choose: search by ID or Name
+├─ Confirm the found item
+└─ Confirm removal
+```
+
+### 4. Update Item
+
+```
+Main Menu → Option 3 (Edit Food)
+├─ Search by ID
+├─ Change name and/or quantity
+├─ Review the changes
+└─ Confirm and save
 ```
 
 ---
 
-## Arquitetura
+## Architecture
 
-### Estrutura de Diretórios
+### Directory Structure
 
 ```
 pystock/
 ├── src/
-│   ├── main.py                 # Ponto de entrada
+│   ├── main.py                 # Entry point
 │   └── modules/
-│       ├── add_item.py         # Funcionalidade de criar
-│       ├── list_item.py        # Funcionalidade de listar
-│       ├── remove_item.py      # Funcionalidade de deletar
-│       └── update_item.py      # Funcionalidade de atualizar
+│       ├── add_item.py         # Create functionality
+│       ├── list_item.py        # List functionality
+│       ├── remove_item.py      # Delete functionality
+│       └── update_item.py      # Update functionality
 ├── data/
-│   ├── user_data.json          # Banco de dados do usuário
-│   └── initial_data.json       # Dados padrão (50 itens)
+│   ├── user_data.json          # User database
+│   └── initial_data.json       # Default data (50 items)
 ├── .gitignore
 └── README.md
 ```
 
-### Modelo de Dados
+### Data Model
 
-Cada item no estoque segue a seguinte estrutura JSON:
+Each item in the inventory follows this JSON structure:
 
 ```json
 {
   "id": 1,
-  "nome": "Arroz 5kg",
-  "quantidade": 100,
-  "categoria": "Grãos"
+  "name": "Rice 5kg",
+  "quantity": 100,
+  "category": "Grains"
 }
 ```
 
-**Campos:**
-- `id` (int): Identificador único, gerado automaticamente
-- `nome` (string): Nome do alimento
-- `quantidade` (int): Quantidade em estoque (≥ 0)
-- `categoria` (string): Classificação do item (extensível para futuras versões)
+**Fields:**
+- `id` (int): Unique identifier, automatically generated
+- `name` (string): Food name
+- `quantity` (int): Stock quantity (≥ 0)
+- `category` (string): Item classification (extensible for future versions)
 
-### Fluxo de Dados
+### Data Flow
 
 ```
-CLI Input → Validação → Processamento → JSON File → CLI Output
+CLI Input → Validation → Processing → JSON File → CLI Output
                               ↓
-                       Persistência
+                        Persistence
 ```
 
 ---
 
-## Versões e Roadmap
+## Versions & Roadmap
 
-### v0.1.x Series - Consolidação
-**Foco:** Estabilidade da lógica core e refinamento da interface CLI
+### v0.1.x Series - Consolidation
+**Focus:** Core logic stability and CLI interface refinement
 
-- v0.1.4 (Atual) - CRUD Completo
-- v0.1.5 - Melhorias UI/UX e tratamento de erros
-- v0.1.6+ - Pequenos ajustes baseados em feedback
+- v0.1.4 (Current) - Full CRUD
+- v0.1.5 - UI/UX improvements and error handling
+- v0.1.6+ - Minor adjustments based on feedback
 
-### v0.2.0 - Refatoração Arquitetural
-**Foco:** Migração para POO (Programação Orientada a Objetos)
+### v0.2.0 - Architectural Refactoring
+**Focus:** Migration to OOP (Object-Oriented Programming)
 
-- [ ] Implementar classes: `Inventory`, `Item`, `FileManager`
-- [ ] Padrão de design: Repository Pattern
-- [ ] Melhorar performance e escalabilidade
-- [ ] Adicionar logging e debugging
+- [ ] Implement classes: `Inventory`, `Item`, `FileManager`
+- [ ] Design pattern: Repository Pattern
+- [ ] Improve performance and scalability
+- [ ] Add logging and debugging
 
-### v0.3.0+ - Expansão de Plataforma
+### v0.3.0+ - Platform Expansion
 
-- [ ] API REST (FastAPI/Flask)
-- [ ] Banco de dados SQL (PostgreSQL/SQLite)
-- [ ] Interface Web (React/Vue)
-- [ ] Aplicativo Desktop (Tkinter/PyQt)
-- [ ] Relatórios em PDF
-- [ ] Suporte a imagens de produtos
+- [ ] REST API (FastAPI/Flask)
+- [ ] SQL database (PostgreSQL/SQLite)
+- [ ] Web interface (React/Vue)
+- [ ] Desktop application (Tkinter/PyQt)
+- [ ] PDF reports
+- [ ] Product image support
 
 ---
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-| Tecnologia | Versão | Propósito |
+| Technology | Version | Purpose |
 |---|---|---|
-| Python | 3.8+ | Linguagem principal |
-| JSON | - | Persistência de dados |
-| Pathlib | - | Gerenciamento de caminhos |
-| OS | - | Limpeza de terminal |
+| Python | 3.8+ | Main language |
+| JSON | - | Data persistence |
+| Pathlib | - | Path management |
+| OS | - | Terminal operations |
 
-**Bibliotecas Utilizadas:**
-- `pathlib` - Manipulação de caminhos (multiplataforma)
-- `json` - Serialização/desserialização de dados
-- `os` - Operações do sistema operacional
-- `time` - Controle de tempo em transições
-
----
-
-## Contribuição
-
-Contribuições são bem-vindas! Este projeto está em desenvolvimento ativo.
-
-### Como Contribuir
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
-### Padrões de Código
-
-- Seguir PEP 8 (Python Enhancement Proposal 8)
-- Usar nomes descritivos para variáveis e funções
-- Adicionar comentários em lógicas complexas
-- Testar funcionalidades antes de commitar
-
-### Reportar Bugs
-
-Encontrou um bug? Abra uma [issue](https://github.com/luke-lynx/pystock/issues) com:
-- Descrição clara do problema
-- Passos para reproduzir
-- Comportamento esperado vs. observado
-- Versão do Python e SO utilizado
+**Libraries Used:**
+- `pathlib` - Path manipulation (cross-platform)
+- `json` - Data serialization/deserialization
+- `os` - Operating system operations
+- `time` - Timing control for transitions
 
 ---
 
-## Validação e Segurança
+## Contributing
 
-### Validações Implementadas
+Contributions are welcome! This project is under active development.
 
-| Campo | Validação |
+### How to Contribute
+
+1. Fork the repository
+2. Create a branch for your feature (`git checkout -b feature/MyFeature`)
+3. Commit your changes (`git commit -m 'Add MyFeature'`)
+4. Push to the branch (`git push origin feature/MyFeature`)
+5. Open a Pull Request
+
+### Code Standards
+
+- Follow PEP 8 (Python Enhancement Proposal 8)
+- Use descriptive names for variables and functions
+- Add comments for complex logic
+- Test features before committing
+
+### Reporting Bugs
+
+Found a bug? Open an [issue](https://github.com/luke-lynx/pystock/issues) with:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs. observed behavior
+- Python version and OS used
+
+---
+
+## Validation & Security
+
+### Implemented Validations
+
+| Field | Validation |
 |---|---|
-| Nome do Item | Não vazio, string |
-| Quantidade | Inteiro não-negativo (≥ 0) |
-| ID | Gerado automaticamente, único |
-| Confirmação | Aceita: s, sim, y, yes (case-insensitive) |
+| Item Name | Non-empty, string |
+| Quantity | Non-negative integer (≥ 0) |
+| ID | Automatically generated, unique |
+| Confirmation | Accepts: s, sim, y, yes (case-insensitive) |
 
-### Considerações de Segurança
+### Security Considerations
 
-- Arquivo JSON é sobrescrito atomicamente em operações de escrita
-- Validação de entrada em todos os pontos de interface
-- Tratamento de exceções em operações críticas
-- Encoding UTF-8 para suporte a caracteres especiais
+- JSON file is atomically overwritten on write operations
+- Input validation at all interface points
+- Exception handling for critical operations
+- UTF-8 encoding for special character support
 
 ---
 
 ## Troubleshooting
 
-### Problema: "Arquivo user_data.json não encontrado"
-**Solução:** Execute o programa novamente e confirme a criação do arquivo na inicialização.
+### Issue: "user_data.json file not found"
+**Solution:** Run the program again and confirm the file creation at startup.
 
-### Problema: "Invalid Value: Please Type Again"
-**Solução:** Verifique se a quantidade inserida é um número inteiro não-negativo.
+### Issue: "Invalid Value: Please Type Again"
+**Solution:** Make sure the quantity entered is a non-negative integer.
 
-### Problema: Item não encontrado ao atualizar
-**Solução:** Consulte a listagem (Opção 4) para confirmar o ID correto do item.
+### Issue: Item not found when updating
+**Solution:** Check the listing (Option 4) to confirm the correct item ID.
 
-### Problema: Programa não executa no Windows/Mac
-**Solução:** Certifique-se de ter Python 3.8+ instalado e use `python` ou `python3` conforme sua configuração.
+### Issue: Program does not run on Windows/Mac
+**Solution:** Make sure you have Python 3.8+ installed and use `python` or `python3` according to your setup.
 
 ---
 
-## Roadmap Visual
+## Visual Roadmap
 
 ```
-v0.1.4 (Atual)
-    ↓ (Pequenos ajustes)
+v0.1.4 (Current)
+    ↓ (Minor adjustments)
 v0.1.5 → v0.1.6 → v0.1.x
-    ↓ (Refatoração completa)
-v0.2.0 (POO + Performance)
-    ↓ (Expansão)
-v0.3.0+ (Multi-plataforma + API)
+    ↓ (Full refactoring)
+v0.2.0 (OOP + Performance)
+    ↓ (Expansion)
+v0.3.0+ (Multi-platform + API)
 ```
 
 ---
 
-## Créditos
+## Credits
 
-Desenvolvido por **@luke-lynx** como projeto de aprendizado em Engenharia de Computação.
+Developed by **@luke-lynx** as a learning project in Computer Engineering.
 
-Este projeto demonstra:
-- Lógica de programação sólida
-- Gestão de arquivos e persistência de dados
-- Design de interface CLI intuitiva
-- Estrutura modular e escalável
-
----
-
-## Licença
-
-Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
+This project demonstrates:
+- Solid programming logic
+- File management and data persistence
+- Intuitive CLI interface design
+- Modular and scalable structure
 
 ---
 
-## Contato & Suporte
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## Contact & Support
 
 - GitHub: [@luke-lynx](https://github.com/luke-lynx)
-- Issues: [Abra uma discussão](https://github.com/luke-lynx/pystock/issues)
-- Discussões: [GitHub Discussions](https://github.com/luke-lynx/pystock/discussions)
+- Issues: [Open a discussion](https://github.com/luke-lynx/pystock/issues)
+- Discussions: [GitHub Discussions](https://github.com/luke-lynx/pystock/discussions)
 
 ---
 
-**PyStock** - Sistema inteligente de gerenciamento de estoque. Desenvolvido com ❤️ em Python.
+**PyStock** - Smart inventory management system. Built with ❤️ in Python.
