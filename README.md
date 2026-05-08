@@ -1,7 +1,7 @@
 # PyStock
 
 <p align="center">
-  <img src="./assets/Pystock-icon.png" width="500" alt="AXON Automotive Manager Logo"/>
+  <img src="./assets/Pystock-modern-icon.png" width="500" alt="AXON Automotive Manager Logo"/>
 </p>
 
 
