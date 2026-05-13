@@ -9,22 +9,28 @@ def main():
     #mensagem de boas vindas
     welcome_to_program()
     #criação de arquivos e confirmaçõa de perguntas essenciais
-    ensure_data_file()
+    initial_screen_opening_data_saving()
     #interface e opções
     interface()
 
+def initial_screen_opening_data_saving():
+    create_new = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()    
+    home_screen_open_file()
 
-def ensure_data_file():
-    response = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()                     
+def home_screen_open_file():
+    response = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()
     
     if response in ["s","sim","yes","y"]:
         with open(user_data(), 'w', encoding='utf8') as f:
             dados = []
             json.dump(dados, f, indent=4, ensure_ascii=False)
-            print("\nArquivo criado com sucesso!")
             
-        
+            print("\nArquivo criado com sucesso!")
+            return dados
+
+def add_50_items():
         base_itens = input("Deseja adicionar 50 itens mais comuns no seu gerenciador?? Digite S o N: _").lower()
+        
         if base_itens in ["s","sim","yes","y"]:
             with open(initial_data(), 'r', encoding='utf8') as f:
                 dados = json.load(f)
@@ -89,22 +95,29 @@ def interface():
         print("  0. Sair")
         print("="*50)
 
-        opcao = input("Escolha uma opcao: ")
-        
-        if opcao == "1":
-            add_item.add_item()
-        elif opcao == "2":
-            remove_item.remove_itens()
-        elif opcao == "3":
-            update_item.update_item()
-        elif opcao == "4":
-            list_item.list_all()
-        elif opcao == "0":
-            print("\nEncerrando...\n")
-            break
+        acoes = {
+            "1": add_item.add_item,
+            "2": remove_item.remove_itens,
+            "3": update_item.update_item,
+            "4": list_item.list_all,
+        }
 
-        else:
-            print("\nOpção invalida ou não disponivel nesta versão.\n")
+        while True:
+            opcao = input("Escolha uma opcao: ")
+
+            if opcao == "0":
+                print("\nEncerrando...\n")
+                break
+
+
+            acao_escolhida = acoes.get(opcao)
+
+
+            if acao_escolhida:
+                acao_escolhida() 
+            else:
+                print("\nOpção inválida...\n")
+
 
 
 if __name__ == "__main__":
