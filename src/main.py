@@ -6,15 +6,22 @@ import sys
 
 
 def main():
-    #mensagem de boas vindas
-    welcome_to_program()
-    #criação de arquivos e confirmaçõa de perguntas essenciais
-    initial_screen_opening_data_saving()
+    #welcome_to_program >>> PyStockUI
+    
+    
+    
+    #initial_screen_opening_data_saving()
     #interface e opções
     interface()
 
 def initial_screen_opening_data_saving():
     create_new = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()    
+    if create_new in ["n","nao","no","n"]:
+        print("\nEncerrando...\n")
+        sys.exit()
+    else:
+        pass
+        
     home_screen_open_file()
 
 def home_screen_open_file():
@@ -41,17 +48,10 @@ def add_50_items():
 
         else:
             pass
-    else:
-        sys.exit(2)
 
 
-def welcome_to_program():
-    print("""\n--------------------------------------------------
-THE FOOD MANAGER - v0.1
---------------------------------------------------
-Bem-vindo ao sistema de gerenciamento de estoque.
-Status: Online
---------------------------------------------------\n""")
+
+
 
 
 def user_data():
