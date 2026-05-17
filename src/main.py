@@ -1,10 +1,9 @@
 from modules import add_item, remove_item, list_item, update_item
-from interfaces_cli import MainPyStockUI
+from pystockui import MainPyStockUI
 from file_manager import FileManager
 from pathlib import Path
 import time
 import sys
-
 
 
 class MainSystem:
@@ -20,9 +19,7 @@ class MainSystem:
 
         self.file_manager = FileManager()
         self.user_file_path = self.file_manager.user_data
-        self.itens_file_path = self.file_manager.initial_data 
-               
-
+        self.itens_file_path = self.file_manager.initial_data
 
     def main(self):
         self.menu.welcome_to_program()
@@ -31,37 +28,30 @@ class MainSystem:
         self.menu.populate_initial_data(self.itens_file_path, self.user_file_path)
         self.interface()
 
-
-
     def interface(self):
-            # Mapeamento de ações definido uma única vez para performance
-            acoes = {
-                "1": add_item.add_item,
-                "2": remove_item.remove_itens,
-                "3": update_item.update_item,
-                "4": list_item.list_all,
-                # "5": gerenciar_quantidades (futura implementação)
-            }
+        acoes = {
+            "1": add_item.add_item,
+            "2": remove_item.remove_itens,
+            "3": update_item.update_item,
+            "4": list_item.list_all,
+        }
 
-            while True:
-                # Chama a exibição visual que você definiu na classe
-                self.menu.display_main_menu()
+        while True:
+            self.menu.display_main_menu()
 
-                # Captura o input conforme sua instrução
-                opcao = input(f"{self.BOLD}Select an option: {self.RESET}").strip()
+            opcao = input(f"{self.BOLD}Select an option: {self.RESET}").strip()
 
-                if opcao == "0":
-                    print(f"\n{self.RED}Exiting system...{self.RESET}\n")
-                    sys.exit() # Ou break, dependendo de onde a interface é chamada
+            if opcao == "0":
+                print(f"\n{self.RED}Exiting system...{self.RESET}\n")
+                sys.exit()
 
-                # Busca a função no dicionário
-                acao_escolhida = acoes.get(opcao)
+            acao_escolhida = acoes.get(opcao)
 
-                if acao_escolhida:
-                    acao_escolhida()
-                else:
-                    print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")
-                    time.sleep(1.5) # Pausa curta para o usuário ler o erro antes do menu reaparecer
+            if acao_escolhida:
+                acao_escolhida()
+            else:
+                print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")
+                time.sleep(1.5)
 
 
 if __name__ == "__main__":
