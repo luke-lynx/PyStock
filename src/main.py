@@ -1,124 +1,69 @@
-from pathlib import Path
 from modules import add_item, remove_item, list_item, update_item
-import os 
-import json
+from interfaces_cli import MainPyStockUI
+from file_manager import FileManager
+from pathlib import Path
+import time
 import sys
 
 
-def main():
-    #welcome_to_program >>> PyStockUI
-    
-    
-    
-    #initial_screen_opening_data_saving()
-    #interface e opções
-    interface()
 
-def initial_screen_opening_data_saving():
-    create_new = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()    
-    if create_new in ["n","nao","no","n"]:
-        print("\nEncerrando...\n")
-        sys.exit()
-    else:
-        pass
-        
-    home_screen_open_file()
+class MainSystem:
+    def __init__(self):
+        self.GREEN = "\033[92m"
+        self.BLUE = "\033[94m"
+        self.RED = "\033[91m"
+        self.RESET = "\033[0m"
+        self.BOLD = "\033[1m"
+        self.LARGURA = 60
 
-def home_screen_open_file():
-    response = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()
-    
-    if response in ["s","sim","yes","y"]:
-        with open(user_data(), 'w', encoding='utf8') as f:
-            dados = []
-            json.dump(dados, f, indent=4, ensure_ascii=False)
-            
-            print("\nArquivo criado com sucesso!")
-            return dados
+        self.menu = MainPyStockUI()
 
-def add_50_items():
-        base_itens = input("Deseja adicionar 50 itens mais comuns no seu gerenciador?? Digite S o N: _").lower()
-        
-        if base_itens in ["s","sim","yes","y"]:
-            with open(initial_data(), 'r', encoding='utf8') as f:
-                dados = json.load(f)
-            
-            with open(user_data(), 'w', encoding='utf8') as f:
-                json.dump(dados, f, indent=4, ensure_ascii=False)
-                print("50 Itens adicionados com sucesso! ")
+        self.file_manager = FileManager()
+        self.user_file_path = self.file_manager.user_data
+        self.itens_file_path = self.file_manager.initial_data 
+               
 
-        else:
-            pass
+
+    def main(self):
+        self.menu.welcome_to_program()
+        self.menu.setup_data_persistence()
+        self.menu.initialize_data_file(self.user_file_path)
+        self.menu.populate_initial_data(self.itens_file_path, self.user_file_path)
+        self.interface()
 
 
 
+    def interface(self):
+            # Mapeamento de ações definido uma única vez para performance
+            acoes = {
+                "1": add_item.add_item,
+                "2": remove_item.remove_itens,
+                "3": update_item.update_item,
+                "4": list_item.list_all,
+                # "5": gerenciar_quantidades (futura implementação)
+            }
 
+            while True:
+                # Chama a exibição visual que você definiu na classe
+                self.menu.display_main_menu()
 
+                # Captura o input conforme sua instrução
+                opcao = input(f"{self.BOLD}Select an option: {self.RESET}").strip()
 
-def user_data():
-    caminho_atual = Path(__file__).resolve()
+                if opcao == "0":
+                    print(f"\n{self.RED}Exiting system...{self.RESET}\n")
+                    sys.exit() # Ou break, dependendo de onde a interface é chamada
 
-    pasta_src = caminho_atual.parent
+                # Busca a função no dicionário
+                acao_escolhida = acoes.get(opcao)
 
-    pasta_raiz = pasta_src.parent
-
-    pasta_data = pasta_raiz / "data"
-
-    arquivo_json = pasta_data / "user_data.json"
-    return arquivo_json
-
-
-def initial_data():
-
-    caminho_atual = Path(__file__).resolve()
-
-    pasta_src = caminho_atual.parent
-
-    pasta_raiz = pasta_src.parent
-
-    pasta_data = pasta_raiz / "data"
-
-    arquivo_json = pasta_data / "initial_data.json"
-    return arquivo_json
-
-
-def interface():
-    while True:
-        print("\n" + "="*50)
-        print("MENU PRINCIPAL".center(50))
-        print("="*50)
-        print("  1. Adicionar Alimento")
-        print("  2. Remover Alimento")
-        print("  3. Alterar Alimento")
-        print("  4. Listar Estoque")
-        print("  5. Gerenciar Quantidades")
-        print("-"*50)
-        print("  0. Sair")
-        print("="*50)
-
-        acoes = {
-            "1": add_item.add_item,
-            "2": remove_item.remove_itens,
-            "3": update_item.update_item,
-            "4": list_item.list_all,
-        }
-
-        while True:
-            opcao = input("Escolha uma opcao: ")
-
-            if opcao == "0":
-                print("\nEncerrando...\n")
-                break
-
-
-            acao_escolhida = acoes.get(opcao)
-
-
-            if acao_escolhida:
-                acao_escolhida() 
-            else:
-                print("\nOpção inválida...\n")
-
+                if acao_escolhida:
+                    acao_escolhida()
+                else:
+                    print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")
+                    time.sleep(1.5) # Pausa curta para o usuário ler o erro antes do menu reaparecer
 
 
 if __name__ == "__main__":
-    main()
+    system = MainSystem()
+    system.main()
