@@ -14,6 +14,12 @@ class AddItemEngine:
 
         self.ui = AddItemUI()
 
+        self.menu = self.ui.welcome_to_add_item()
+
+        self.data = self.load_json(self.user_file_path)
+
+        self.write = self.write_json()
+
     def load_json(self, user_data):
 
         if os.path.exists(user_data):
@@ -21,7 +27,7 @@ class AddItemEngine:
 
                 try:
                     data = json.load(f)
-                    return data, None
+                    return data
                 except json.JSONDecodeError as e:
 
                     return (
@@ -33,10 +39,17 @@ class AddItemEngine:
                 f"\n{self.ui.YELLOW}User data file not found.{self.ui.RESET}\n"
             )
 
-    def write_json(self, user_data, name, quantity):
+    def write_json(self):
 
-        with open(user_data, "w", encoding="utf-8") as f:
-            json.dump(..., f, indent=4, ensure_ascii=False)
+        name = self.ui._name
+        quantity = self.ui._quantity
+
+        new_data = {"id": len(self.data) + 1, "nome": name, "quantidade": quantity}
+
+        self.data.append(new_data)
+
+        with open(self.user_file_path, "w", encoding="utf-8") as f:
+            json.dump(self.data, f, indent=4, ensure_ascii=False)
 
 
 if __name__ == "__main__":

@@ -124,6 +124,8 @@ class AddItemUI:
         self.CIANO = "\033[96m"
         self.MAGENTA = "\033[95m"
         self.YELLOW = "\033[33m"
+        self._name = None
+        self._quantity = 0
         self.LARGURA = 60
 
     def welcome_to_add_item(self):
@@ -182,7 +184,17 @@ class AddItemUI:
             )
             print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
 
-            return item_name, quantity_item
+            self._name = item_name
+            self._quantity = quantity_item
+            return self._name, self._quantity
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def quantity(self):
+        return self._quantity
 
     def reject_option(self, input_value):
 
