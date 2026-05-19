@@ -16,9 +16,10 @@ class AddItemEngine:
 
         self.menu = self.ui.welcome_to_add_item()
 
-        self.data = self.load_json(self.user_file_path)
+        if self.menu:
+            self.data = self.load_json(self.user_file_path)
 
-        self.write = self.write_json()
+            self.write = self.write_json()
 
     def load_json(self, user_data):
 

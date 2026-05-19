@@ -186,7 +186,7 @@ class AddItemUI:
 
             self._name = item_name
             self._quantity = quantity_item
-            return self._name, self._quantity
+            return True, self._name, self._quantity
 
     @property
     def name(self):
