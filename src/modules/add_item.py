@@ -1,6 +1,5 @@
 from file_manager import FileManager
 from pystockui import AddItemUI
-from pathlib import Path
 import json
 import os
 

@@ -1,5 +1,3 @@
-from file_manager import FileManager
-from pathlib import Path
 import time
 import json
 import sys
@@ -22,7 +20,7 @@ class MainPyStockUI:
         print(f"{self.BLUE}{'-' * largura}{self.RESET}")
         print(f"{self.BOLD}{'PyStock - v0.1.5'.center(largura)}{self.RESET}")
         print(f"{self.BLUE}{'-' * largura}{self.RESET}")
-        print(f"Welcome to the inventory management system.")
+        print("Welcome to the inventory management system.")
         print(f"Status: {self.GREEN}● Online{self.RESET}")
         print(f"{self.BLUE}{'-' * largura}{self.RESET}\n")
         time.sleep(0.4)
@@ -217,6 +215,51 @@ class AddItemUI:
         return False
 
 
+class RemoveItemUI:
+    def __init__(self):
+        self.GREEN = "\033[92m"
+        self.BLUE = "\033[94m"
+        self.RED = "\033[91m"
+        self.RESET = "\033[0m"
+        self.BOLD = "\033[1m"
+        self.CIANO = "\033[96m"
+        self.MAGENTA = "\033[95m"
+        self.YELLOW = "\033[33m"
+        self.LARGURA = 60
+
+    def welcome_to_remove_item(self):
+        print(f"\n{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
+        print(
+            f"{self.BOLD}{'REMOVE ITEM FROM INVENTORY'.center(self.LARGURA)}{self.RESET}"
+        )
+        print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
+        print(
+            f"{self.BOLD}{" CAUTION: This action will permanently delete the record."}{self.RESET}"
+        )
+        print(f"{self.GREEN}{' Type S to cancel and return to Main Menu.'}{self.RESET}")
+        print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
+
+        item_name = input(
+            f"\n{self.GREEN} > Enter Item ID or Name: _{self.RESET} "
+        ).strip()
+
+        if self.exit_to_menu(item_name):
+            return None
+        else:
+            return item_name
+
+    def exit_to_menu(self, input_value):
+
+        if input_value.lower() in ["s", "sim", "y", "yes"]:
+            print(
+                f"\n{self.RED}Operation cancelled. Returning to main menu...{self.RESET}\n"
+            )
+            time.sleep(0.5)
+            return True
+
+        return False
+
+
 if __name__ == "__main__":
-    menu = AddItemUI()
-    menu.welcome_to_add_item()
+    menu = RemoveItemUI()
+    menu.welcome_to_remove_item()

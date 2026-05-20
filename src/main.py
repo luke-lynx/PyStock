@@ -1,7 +1,6 @@
 from modules import add_item, remove_item, list_item, update_item
-from pystockui import MainPyStockUI
 from file_manager import FileManager
-from pathlib import Path
+from pystockui import MainPyStockUI
 import time
 import sys
 

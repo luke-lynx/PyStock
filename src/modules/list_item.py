@@ -2,7 +2,6 @@ from pathlib import Path
 import time
 import os 
 import json
-import sys
 
 def list_all():
 
