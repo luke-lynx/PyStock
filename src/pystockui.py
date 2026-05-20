@@ -258,6 +258,12 @@ class RemoveItemUI:
             return True
 
         return False
+    
+
+    def second_part_interface(self, nome, qtd, id):
+        print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
+        print(f"{self.BOLD} [ STATUS ] Searching database...{self.RESET}")
+        print(f"{self.BLUE}{'=' * self.LARGURA}")
 
 
 if __name__ == "__main__":

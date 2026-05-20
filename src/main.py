@@ -30,7 +30,7 @@ class MainSystem:
     def interface(self):
         acoes = {
             "1": add_item.AddItemEngine,
-            "2": remove_item.remove_itens,
+            "2": remove_item.RemoveItensEngine,
             "3": update_item.update_item,
             "4": list_item.list_all,
         }

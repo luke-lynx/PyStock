@@ -6,9 +6,9 @@ import os
 
 class AddItemEngine:
     def __init__(self):
-
+        
         self.file_manager = FileManager()
-
+        
         self.user_file_path = self.file_manager.user_data
 
         self.ui = AddItemUI()
@@ -16,6 +16,7 @@ class AddItemEngine:
         self.menu = self.ui.welcome_to_add_item()
 
         if self.menu:
+        
             self.data = self.load_json(self.user_file_path)
 
             self.write = self.write_json()
