@@ -2,7 +2,6 @@ import time
 import json
 import sys
 
-
 class MainPyStockUI:
     def __init__(self):
         self.GREEN = "\033[92m"
@@ -227,6 +226,7 @@ class RemoveItemUI:
         self.YELLOW = "\033[33m"
         self.LARGURA = 60
 
+
     def welcome_to_remove_item(self):
         print(f"\n{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
         print(
@@ -239,14 +239,36 @@ class RemoveItemUI:
         print(f"{self.GREEN}{' Type S to cancel and return to Main Menu.'}{self.RESET}")
         print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
 
-        item_name = input(
-            f"\n{self.GREEN} > Enter Item ID or Name: _{self.RESET} "
-        ).strip()
+        while True:
+            item_name = input(
+                f"\n{self.GREEN} > Enter Item ID or Name: _{self.RESET} "
+            ).strip()
 
-        if self.exit_to_menu(item_name):
-            return None
-        else:
+             
+            if self.exit_to_menu(item_name):
+                return None
+
+             
+            try:
+                return int(item_name)
+            except ValueError:
+                 
+                pass                
+
+             
             return item_name
+
+
+    def second_part_interface(self, nome, qtd, id):
+        print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
+        print(f"{self.BOLD} [ STATUS ] Searching database...{self.RESET}")
+        print(f"{self.BLUE}{'=' * self.LARGURA}")
+        print(f"\n{self.GREEN}Item found: {self.YELLOW}'{nome}'{self.RESET} with quantity {self.YELLOW}{qtd}{self.RESET} (ID: {self.YELLOW}{id}{self.RESET})")
+        confirmation = input(
+            f"{self.RED}⚠ Are you sure you want to remove this item? This action cannot be undone! (y/n): {self.RESET}"
+        )
+        return confirmation.strip().lower()
+
 
     def exit_to_menu(self, input_value):
 
@@ -259,12 +281,6 @@ class RemoveItemUI:
 
         return False
     
-
-    def second_part_interface(self, nome, qtd, id):
-        print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
-        print(f"{self.BOLD} [ STATUS ] Searching database...{self.RESET}")
-        print(f"{self.BLUE}{'=' * self.LARGURA}")
-
 
 if __name__ == "__main__":
     menu = RemoveItemUI()

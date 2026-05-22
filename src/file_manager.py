@@ -20,5 +20,6 @@ class FileManager:
     def initial_data(self):
         return self.get_path("initial_data.json")
     
+    
 if __name__ == "__main__":
     file = FileManager()
