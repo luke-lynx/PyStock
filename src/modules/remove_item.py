@@ -1,7 +1,6 @@
 from pathlib import Path
 import os 
 import json
-import sys
 
 
 def remove_itens():
