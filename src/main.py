@@ -31,8 +31,8 @@ class MainSystem:
         acoes = {
             "1": add_item.AddItemEngine,
             "2": remove_item.RemoveItensEngine,
-            "3": update_item.update_item,
-            "4": list_item.list_all,
+            "3": update_item.UpdateItemEngine,
+            "4": list_item.ListItem,
         }
 
         while True:

@@ -1,6 +1,7 @@
-import file_manager as file_manager_
 from pystockui import RemoveItemUI
+import file_manager as file_manager_
 import json
+import time
 import os
 
 class RemoveItensEngine:
@@ -52,11 +53,13 @@ class RemoveItensEngine:
                             else:
                                 print(f"{self.removeui.RED}Removal cancelled. Returning to main menu...{self.removeui.RESET}")
                             
+                            time.sleep(2)
                             return
 
             
                     if not item_encontrado:
                         print(f"{self.removeui.RED}Error: Item not found. Please check the ID or name and try again.{self.removeui.RESET}")
+                        time.sleep(2)
                         return
             else:
                 print(f"{self.removeui.RED}Error: User data file not found.{self.removeui.RESET}")
