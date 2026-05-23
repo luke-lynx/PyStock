@@ -50,7 +50,7 @@ class MainSystem:
                 acao_escolhida()
             else:
                 print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")
-                time.sleep(1.5)
+                time.sleep(1)
 
 
 if __name__ == "__main__":

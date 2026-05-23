@@ -242,7 +242,7 @@ class RemoveItemUI:
         while True:
             item_name = input(
                 f"\n{self.GREEN} > Enter Item ID or Name: _{self.RESET} "
-            ).strip()
+            ).strip().lower()
 
              
             if self.exit_to_menu(item_name):
@@ -259,7 +259,7 @@ class RemoveItemUI:
             return item_name
 
 
-    def second_part_interface(self, nome, qtd, id):
+    def confirm_remove_item(self, nome, qtd, id):
         print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
         print(f"{self.BOLD} [ STATUS ] Searching database...{self.RESET}")
         print(f"{self.BLUE}{'=' * self.LARGURA}")

@@ -51,6 +51,8 @@ class AddItemEngine:
 
         with open(self.user_file_path, "w", encoding="utf-8") as f:
             json.dump(self.data, f, indent=4, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
 
 
 if __name__ == "__main__":
