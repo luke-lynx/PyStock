@@ -104,7 +104,6 @@ class MainPyStockUI:
         print(f"  {self.BLUE}2.{self.RESET} Remove Food Item")
         print(f"  {self.BLUE}3.{self.RESET} Update Food Item")
         print(f"  {self.BLUE}4.{self.RESET} List Inventory")
-        print(f"  {self.BLUE}5.{self.RESET} Manage Quantities")
 
         print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
         print(f"  {self.RED}0.{self.RESET} Exit")
