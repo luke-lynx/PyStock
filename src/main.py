@@ -1,124 +1,58 @@
-from pathlib import Path
 from modules import add_item, remove_item, list_item, update_item
-import os 
-import json
+from file_manager import FileManager
+from pystockui import MainPyStockUI
+import time
 import sys
 
 
-def main():
-    #mensagem de boas vindas
-    welcome_to_program()
-    #criação de arquivos e confirmaçõa de perguntas essenciais
-    initial_screen_opening_data_saving()
-    #interface e opções
-    interface()
+class MainSystem:
+    def __init__(self):
+        self.GREEN = "\033[92m"
+        self.BLUE = "\033[94m"
+        self.RED = "\033[91m"
+        self.RESET = "\033[0m"
+        self.BOLD = "\033[1m"
+        self.LARGURA = 60
 
-def initial_screen_opening_data_saving():
-    create_new = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()    
-    home_screen_open_file()
+        self.menu = MainPyStockUI()
 
-def home_screen_open_file():
-    response = input("""Antes de começarmos temos um aviso.\nSerá necessario criar um novo arquivo mesmo se o usuario ja possui-lo, deseja continuar?\nDigite S ou N: _""").lower()
-    
-    if response in ["s","sim","yes","y"]:
-        with open(user_data(), 'w', encoding='utf8') as f:
-            dados = []
-            json.dump(dados, f, indent=4, ensure_ascii=False)
-            
-            print("\nArquivo criado com sucesso!")
-            return dados
+        self.file_manager = FileManager()
+        self.user_file_path = self.file_manager.user_data
+        self.itens_file_path = self.file_manager.initial_data
 
-def add_50_items():
-        base_itens = input("Deseja adicionar 50 itens mais comuns no seu gerenciador?? Digite S o N: _").lower()
-        
-        if base_itens in ["s","sim","yes","y"]:
-            with open(initial_data(), 'r', encoding='utf8') as f:
-                dados = json.load(f)
-            
-            with open(user_data(), 'w', encoding='utf8') as f:
-                json.dump(dados, f, indent=4, ensure_ascii=False)
-                print("50 Itens adicionados com sucesso! ")
+    def main(self):
+        self.menu.welcome_to_program()
+        self.menu.setup_data_persistence()
+        self.menu.initialize_data_file(self.user_file_path)
+        self.menu.populate_initial_data(self.itens_file_path, self.user_file_path)
+        self.interface()
 
-        else:
-            pass
-    else:
-        sys.exit(2)
-
-
-def welcome_to_program():
-    print("""\n--------------------------------------------------
-THE FOOD MANAGER - v0.1
---------------------------------------------------
-Bem-vindo ao sistema de gerenciamento de estoque.
-Status: Online
---------------------------------------------------\n""")
-
-
-def user_data():
-    caminho_atual = Path(__file__).resolve()
-
-    pasta_src = caminho_atual.parent
-
-    pasta_raiz = pasta_src.parent
-
-    pasta_data = pasta_raiz / "data"
-
-    arquivo_json = pasta_data / "user_data.json"
-    return arquivo_json
-
-
-def initial_data():
-
-    caminho_atual = Path(__file__).resolve()
-
-    pasta_src = caminho_atual.parent
-
-    pasta_raiz = pasta_src.parent
-
-    pasta_data = pasta_raiz / "data"
-
-    arquivo_json = pasta_data / "initial_data.json"
-    return arquivo_json
-
-
-def interface():
-    while True:
-        print("\n" + "="*50)
-        print("MENU PRINCIPAL".center(50))
-        print("="*50)
-        print("  1. Adicionar Alimento")
-        print("  2. Remover Alimento")
-        print("  3. Alterar Alimento")
-        print("  4. Listar Estoque")
-        print("  5. Gerenciar Quantidades")
-        print("-"*50)
-        print("  0. Sair")
-        print("="*50)
-
+    def interface(self):
         acoes = {
-            "1": add_item.add_item,
-            "2": remove_item.remove_itens,
-            "3": update_item.update_item,
-            "4": list_item.list_all,
+            "1": add_item.AddItemEngine,
+            "2": remove_item.RemoveItensEngine,
+            "3": update_item.UpdateItemEngine,
+            "4": list_item.ListItem,
         }
 
         while True:
-            opcao = input("Escolha uma opcao: ")
+            self.menu.display_main_menu()
+
+            opcao = input(f"{self.BOLD}Select an option: {self.RESET}").strip()
 
             if opcao == "0":
-                print("\nEncerrando...\n")
-                break
-
+                print(f"\n{self.RED}Exiting system...{self.RESET}\n")
+                sys.exit()
 
             acao_escolhida = acoes.get(opcao)
 
-
             if acao_escolhida:
-                acao_escolhida() 
+                acao_escolhida()
             else:
-                print("\nOpção inválida...\n")
-
+                print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")
+                time.sleep(1)
 
 
 if __name__ == "__main__":
-    main()
+    system = MainSystem()
+    system.main()
