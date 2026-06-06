@@ -1,4 +1,4 @@
-from modules import add_item, remove_item, list_item, update_item
+from modules import AddItemEngine, RemoveItensEngine, ListItem, UpdateItemEngine
 from file_manager import FileManager
 from pystockui import MainPyStockUI
 import time
@@ -20,7 +20,7 @@ class MainSystem:
         self.user_file_path = self.file_manager.user_data
         self.itens_file_path = self.file_manager.initial_data
 
-    def main(self):
+    def start(self):
         self.menu.welcome_to_program()
         self.menu.setup_data_persistence()
         self.menu.initialize_data_file(self.user_file_path)
@@ -29,10 +29,10 @@ class MainSystem:
 
     def interface(self):
         acoes = {
-            "1": add_item.AddItemEngine,
-            "2": remove_item.RemoveItensEngine,
-            "3": update_item.UpdateItemEngine,
-            "4": list_item.ListItem,
+            "1": AddItemEngine,
+            "2": RemoveItensEngine,
+            "3": UpdateItemEngine,
+            "4": ListItem,
         }
 
         while True:
@@ -53,6 +53,32 @@ class MainSystem:
                 time.sleep(1)
 
 
-if __name__ == "__main__":
+def main():
     system = MainSystem()
-    system.main()
+    system.start()
+
+
+def validate_item_name(name: str) -> bool:
+    if not name.strip():
+        return False
+    cleaned_name = name.strip()
+    return 3 <= len(cleaned_name) <= 40
+
+
+def sanitize_sku(sku_str: str) -> str:
+    return sku_str.strip().replace(" ", "").replace("-", "").upper()
+
+
+def is_stock_low(current_stock: int, min_threshold: int) -> bool:
+    try:
+        return int(current_stock) <= int(min_threshold)
+    except (ValueError, TypeError):
+        return False
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()

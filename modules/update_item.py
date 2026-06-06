@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Add parent directory to path to allow imports from root
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from file_manager import FileManager
 from pystockui import UpdateItemUI
 import time

@@ -1,9 +1,10 @@
 # PyStock
 
 <p align="center">
-  <img src="./assets/Pystock-modern-icon.png" width="500" alt="AXON Automotive Manager Logo"/>
+  <img src="./assets/Pystock-modern-icon.png" width="500" alt="PyStock  Logo"/>
 </p>
 
+### 📺 [Video Demo: Watch PyStock in Action](https://youtu.be/qNxvnkJ_SM4?si=92NlkkqoxEHzGBX9)
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -292,7 +293,7 @@ v0.3.0+ (Multi-platform + API)
 
 ## Credits
 
-Developed by **@luke-lynx** as a learning project in Computer Engineering.
+Developed by **Lucas Barbosa Gomes do Nascimento (@luke-lynx)** as the Final Project for **Harvard's CS50P**.
 
 This project demonstrates:
 - Solid programming logic
@@ -300,7 +301,7 @@ This project demonstrates:
 - Intuitive CLI interface design
 - Modular and scalable structure
 
----
+
 
 ## License
 
@@ -311,7 +312,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact & Support
 
 - GitHub: [@luke-lynx](https://github.com/luke-lynx)
-- Issues: [Open a discussion](https://github.com/luke-lynx/pystock/issues)
+- My Original Project: [Make with love](https://github.com/luke-lynx/PyStock)
 - Discussions: [GitHub Discussions](https://github.com/luke-lynx/pystock/discussions)
 
 ---

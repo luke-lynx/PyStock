@@ -3,8 +3,7 @@ from pathlib import Path
 
 class FileManager:
     def __init__(self):
-        
-        self.base_path = Path(__file__).resolve().parent.parent / "data"
+        self.base_path = Path(__file__).resolve().parent / "data"
         
         self.base_path.mkdir(exist_ok=True)
 

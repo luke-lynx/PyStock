@@ -1,5 +1,11 @@
+import sys
+from pathlib import Path
+
+# Add parent directory to path to allow imports from root
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from pystockui import RemoveItemUI
-import file_manager as file_manager_
+from file_manager import FileManager
 import json
 import time
 import os
@@ -7,7 +13,7 @@ import os
 class RemoveItensEngine:
     def __init__(self):
 
-        self.file_manager = file_manager_.FileManager()
+        self.file_manager = FileManager()
 
         self.user_file_path = self.file_manager.user_data
 
@@ -24,7 +30,7 @@ class RemoveItensEngine:
                 return
 
             if os.path.exists(self.user_file_path):
-                with open(self.file_manager.user_data, "r", encoding="utf-8") as f:
+                with open(self.user_file_path, "r", encoding="utf-8") as f:
                     try:
                         data = json.load(f)
                     except json.JSONDecodeError as e:
@@ -46,15 +52,14 @@ class RemoveItensEngine:
                             if confirm in ["s", "sim", "y", "yes"]:
                                 data.remove(item)
                                 
-                                with open(self.file_manager.user_data, "w", encoding="utf-8") as f:
+                                with open(self.user_file_path, "w", encoding="utf-8") as f:
                                     json.dump(data, f, indent=4, ensure_ascii=False)
-                                print(f"{self.removeui.GREEN}Item removed successfully!{self.removeui.RESET}")
-                            
-                            else:
-                                print(f"{self.removeui.RED}Removal cancelled. Returning to main menu...{self.removeui.RESET}")
-                            
-                            time.sleep(2)
+                            print(f"{self.removeui.GREEN}Item removed successfully!{self.removeui.RESET}")
                             return
+                                                
+                    print(f"{self.removeui.RED}Removal cancelled. Returning to main menu...{self.removeui.RESET}")
+                    time.sleep(2)
+                    return
 
             
                     if not item_encontrado:

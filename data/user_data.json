@@ -1,142 +1,142 @@
 [
     {
         "id": 1,
-        "nome": "Arroz 5kg",
-        "quantidade": 0
+        "nome": "White Rice 5kg",
+        "quantidade": 2
     },
     {
         "id": 2,
-        "nome": "Feijão Preto 1kg",
+        "nome": "Dried Beans 1kg",
         "quantidade": 0
     },
     {
         "id": 3,
-        "nome": "Açúcar Refinado 1kg",
+        "nome": "Granulated Sugar 1kg",
         "quantidade": 0
     },
     {
         "id": 4,
-        "nome": "Café Torrado 500g",
+        "nome": "Ground Coffee 500g",
         "quantidade": 0
     },
     {
         "id": 5,
-        "nome": "Óleo de Soja 900ml",
+        "nome": "Vegetable Oil 1L",
         "quantidade": 0
     },
     {
         "id": 6,
-        "nome": "Sal Refinado 1kg",
+        "nome": "Table Salt 1kg",
         "quantidade": 0
     },
     {
         "id": 7,
-        "nome": "Macarrão Espaguete 500g",
+        "nome": "Spaghetti Pasta 500g",
         "quantidade": 0
     },
     {
         "id": 8,
-        "nome": "Farinha de Trigo 1kg",
+        "nome": "All-Purpose Flour 1kg",
         "quantidade": 0
     },
     {
         "id": 9,
-        "nome": "Leite Integral 1L",
+        "nome": "Whole Milk 1L",
         "quantidade": 0
     },
     {
         "id": 10,
-        "nome": "Manteiga com Sal 200g",
+        "nome": "Salted Butter 250g",
         "quantidade": 0
     },
     {
         "id": 11,
-        "nome": "Ovos Brancos - Dúzia",
+        "nome": "Eggs 12 Pack",
         "quantidade": 0
     },
     {
         "id": 12,
-        "nome": "Molho de Tomate Sachê",
-        "quantidade": 10
+        "nome": "Tomato Sauce 500g",
+        "quantidade": 0
     },
     {
         "id": 13,
-        "nome": "Arroz Integral 1kg",
+        "nome": "Brown Rice 1kg",
         "quantidade": 0
     },
     {
         "id": 14,
-        "nome": "Feijão Carioca 1kg",
+        "nome": "Lentils 1kg",
         "quantidade": 0
     },
     {
         "id": 15,
-        "nome": "Fubá Mimoso 500g",
+        "nome": "Cornmeal 500g",
         "quantidade": 0
     },
     {
         "id": 16,
-        "nome": "Farinha de Mandioca 500g",
+        "nome": "Quinoa 500g",
         "quantidade": 0
     },
     {
         "id": 17,
-        "nome": "Biscoito Recheado",
+        "nome": "Chocolate Cookies 300g",
         "quantidade": 0
     },
     {
         "id": 18,
-        "nome": "Pão de Forma",
+        "nome": "Sandwich Bread 500g",
         "quantidade": 0
     },
     {
         "id": 19,
-        "nome": "Achocolatado em Pó 400g",
+        "nome": "Cocoa Powder Drink Mix 400g",
         "quantidade": 0
     },
     {
         "id": 20,
-        "nome": "Creme de Leite",
+        "nome": "Cooking Cream 200g",
         "quantidade": 0
     },
     {
         "id": 21,
-        "nome": "Leite Condensado",
+        "nome": "Sweetened Condensed Milk 400g",
         "quantidade": 0
     },
     {
         "id": 22,
-        "nome": "Milho Verde Lata",
+        "nome": "Canned Sweet Corn 340g",
         "quantidade": 0
     },
     {
         "id": 23,
-        "nome": "Ervilha Lata",
+        "nome": "Canned Peas 340g",
         "quantidade": 0
     },
     {
         "id": 24,
-        "nome": "Atum em Lata",
+        "nome": "Canned Tuna 160g",
         "quantidade": 0
     },
     {
         "id": 25,
-        "nome": "Sardinha em Lata",
+        "nome": "Canned Sardines 125g",
         "quantidade": 0
     },
     {
         "id": 26,
-        "nome": "Azeite de Oliva 500ml",
+        "nome": "Olive Oil 500ml",
         "quantidade": 0
     },
     {
         "id": 27,
-        "nome": "Vinagre de Álcool",
+        "nome": "White Vinegar 500ml",
         "quantidade": 0
     },
     {
         "id": 28,
-        "nome": "Maionese 500g",
+        "nome": "Mayonnaise 500g",
         "quantidade": 0
     },
     {
@@ -146,107 +146,107 @@
     },
     {
         "id": 30,
-        "nome": "Mostarda 200g",
+        "nome": "Mustard 250g",
         "quantidade": 0
     },
     {
         "id": 31,
-        "nome": "Gelatina em Pó",
+        "nome": "Gelatin Dessert Mix 100g",
         "quantidade": 0
     },
     {
         "id": 32,
-        "nome": "Pipoca Premium 500g",
+        "nome": "Popcorn Kernels 500g",
         "quantidade": 0
     },
     {
         "id": 33,
-        "nome": "Aveia em Flocos",
+        "nome": "Rolled Oats 1kg",
         "quantidade": 0
     },
     {
         "id": 34,
-        "nome": "Cereal Matinal",
+        "nome": "Breakfast Cereal 500g",
         "quantidade": 0
     },
     {
         "id": 35,
-        "nome": "Chá de Camomila",
+        "nome": "Chamomile Tea 50g",
         "quantidade": 0
     },
     {
         "id": 36,
-        "nome": "Suco de Uva 1L",
+        "nome": "Fruit Juice 1L",
         "quantidade": 0
     },
     {
         "id": 37,
-        "nome": "Água Mineral 1.5L",
+        "nome": "Mineral Water 1.5L",
         "quantidade": 0
     },
     {
         "id": 38,
-        "nome": "Refrigerante 2L",
+        "nome": "Soft Drink 2L",
         "quantidade": 0
     },
     {
         "id": 39,
-        "nome": "Peito de Frango 1kg",
+        "nome": "Chicken Breast 1kg",
         "quantidade": 0
     },
     {
         "id": 40,
-        "nome": "Carne Moída 500g",
+        "nome": "Ground Beef 500g",
         "quantidade": 0
     },
     {
         "id": 41,
-        "nome": "Queijo Mussarela 200g",
+        "nome": "Cheddar Cheese 250g",
         "quantidade": 0
     },
     {
         "id": 42,
-        "nome": "Presunto Fatiado 200g",
+        "nome": "Sliced Turkey 200g",
         "quantidade": 0
     },
     {
         "id": 43,
-        "nome": "Iogurte Natural",
+        "nome": "Plain Yogurt 1kg",
         "quantidade": 0
     },
     {
         "id": 44,
-        "nome": "Batata Inglesa 1kg",
+        "nome": "Potatoes 1kg",
         "quantidade": 0
     },
     {
         "id": 45,
-        "nome": "Cebola 1kg",
+        "nome": "Onions 1kg",
         "quantidade": 0
     },
     {
         "id": 46,
-        "nome": "Alho - Cabeça",
+        "nome": "Garlic 250g",
         "quantidade": 0
     },
     {
         "id": 47,
-        "nome": "Tomate Italiano 1kg",
+        "nome": "Tomatoes 1kg",
         "quantidade": 0
     },
     {
         "id": 48,
-        "nome": "Maçã Gala - Unidade",
+        "nome": "Apples 1kg",
         "quantidade": 0
     },
     {
         "id": 49,
-        "nome": "Banana Nanica - Dúzia",
+        "nome": "Bananas 1kg",
         "quantidade": 0
     },
     {
         "id": 50,
-        "nome": "Laranja Pera - Saco 2kg",
+        "nome": "Oranges 2kg",
         "quantidade": 0
     }
 ]

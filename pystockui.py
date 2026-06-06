@@ -392,5 +392,4 @@ class UpdateItemUI:
 
 
 if __name__ == "__main__":
-    ui = UpdateItemUI()
-    ui.final_confirmation(1, "Banana", 10, "Banana", 15)
+    ui = MainPyStockUI()
