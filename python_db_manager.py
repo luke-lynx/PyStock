@@ -40,3 +40,18 @@ class OpenDatabase:
         self._cursor.execute("SELECT * FROM stock;")
         return self._cursor.fetchall()
 
+    def db_search_item(self, search_term):
+        self._cursor.execute("SELECT * FROM stock WHERE name LIKE ?;", (f"%{search_term}%",))
+        return self._cursor.fetchall()
+
+    def db_remove_item(self, item_name):
+        self._cursor.execute("DELETE FROM stock WHERE name = ?;", (item_name,))
+        self.db_commit()
+
+    def db_update_item(self, id, new_name, new_quantity, new_price):
+        self._cursor.execute("""
+        UPDATE stock 
+        SET name = ?, quantity = ?, price = ?
+        WHERE id = ?;
+        """, (new_name, new_quantity, new_price, id))
+        self.db_commit()

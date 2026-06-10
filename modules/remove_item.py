@@ -5,70 +5,50 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pystockui import RemoveItemUI
-from file_manager import FileManager
-import json
 import time
-import os
 
 class RemoveItensEngine:
-    def __init__(self):
-
-        self.file_manager = FileManager()
-
-        self.user_file_path = self.file_manager.user_data
-
+    def __init__(self, data_base):
+        self.data_base = data_base
         self.removeui = RemoveItemUI()
 
+    def execute(self):
         self.remove_itens()
 
-
     def remove_itens(self):
-        
+            
+            # Item name or ID input
             id_name = self.removeui.welcome_to_remove_item() 
 
-            if id_name is None:
-                return
+            # Search for the item by ID or name
+            search = self.data_base.db_search_item(id_name)
 
-            if os.path.exists(self.user_file_path):
-                with open(self.user_file_path, "r", encoding="utf-8") as f:
-                    try:
-                        data = json.load(f)
-                    except json.JSONDecodeError as e:
-                        print(
-                            f"{self.removeui.RED}Error: Failed to parse user data file: {self.removeui.GREEN} {e.msg} in line {e.lineno} column {e.colno}{self.removeui.RESET}"
-                        )
+            item_encontrado = False
+
+            for item in search:
+                if item["id"] == id_name or item["name"].lower() == id_name.lower():
+                    item_encontrado = True
+                    confirm = self.removeui.confirm_remove_item(item["name"], item["quantity"], item["price"])
+                    validation_confirm_user_prompt = self.confirm_remove_item(confirm)
+                    if validation_confirm_user_prompt:
+                        self.data_base.db_remove_item(item["name"])
+                        print(f"{self.removeui.GREEN}Item removed successfully!{self.removeui.RESET}")
                         return
-                    
-                    item_encontrado = False
-                    
-                    for item in data:
- 
-                        nome_no_json = str(item.get("nome")).lower()
-                        
-                        if item.get("id") == id_name or nome_no_json == str(id_name):
-                            item_encontrado = True
-                            confirm = self.removeui.confirm_remove_item(item.get("nome"), item.get("quantidade"), item.get("id"))  # Part 2°
-                            
-                            if confirm in ["s", "sim", "y", "yes"]:
-                                data.remove(item)
-                                
-                                with open(self.user_file_path, "w", encoding="utf-8") as f:
-                                    json.dump(data, f, indent=4, ensure_ascii=False)
-                            print(f"{self.removeui.GREEN}Item removed successfully!{self.removeui.RESET}")
-                            return
-                                                
-                    print(f"{self.removeui.RED}Removal cancelled. Returning to main menu...{self.removeui.RESET}")
-                    time.sleep(2)
-                    return
-
-            
-                    if not item_encontrado:
-                        print(f"{self.removeui.RED}Error: Item not found. Please check the ID or name and try again.{self.removeui.RESET}")
+                    else:
+                        print(f"{self.removeui.RED}Removal cancelled. Returning to main menu...{self.removeui.RESET}")
                         time.sleep(2)
                         return
-            else:
-                print(f"{self.removeui.RED}Error: User data file not found.{self.removeui.RESET}")
-                return
+
+                if not item_encontrado:
+                    print(f"{self.removeui.RED}Error: Item not found. Please check the ID or name and try again.{self.removeui.RESET}")
+                    time.sleep(2)
+                    return
+            
+    def confirm_remove_item(self, input_value):
+        if input_value.lower() in ["s", "sim", "y", "yes"]:
+            return True
+
+        return False
 
 
 if __name__ == "__main__":

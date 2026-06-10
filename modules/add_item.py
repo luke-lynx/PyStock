@@ -12,11 +12,17 @@ class AddItemEngine:
 
     def execute(self):
         self.ui = AddItemUI()
-        
-        self.bool, self._name, self._quantity, self._price = self.ui.welcome_to_add_item()
 
-        self.db.db_insert_item(self._name, self._quantity, self._price)
-        return None
+        self.result_and_values = self.ui.welcome_to_add_item()
+
+        if self.result_and_values is None:
+            return None
+
+        self.bool, self._name, self._quantity, self._price = self.result_and_values
+
+        if self.bool:
+            self.db.db_insert_item(self._name, self._quantity, self._price)
+            return None
 
 
 if __name__ == "__main__":

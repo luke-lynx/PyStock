@@ -284,7 +284,12 @@ class UpdateItemUI:
         print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
         print(f"{self.BOLD}{self.YELLOW}{' >>> IDENTIFIER QUERY (ID)'}{self.RESET}")
         print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
-        id_ = int(input(f"{self.GREEN} Enter item numeric ID (e.g., 1, 42): _{self.RESET} ").strip())
+        try:
+            id_ = int(input(f"{self.GREEN} Enter item numeric ID (e.g., 1, 42): _{self.RESET} ").strip())
+        except ValueError:
+            print(f"\n{self.RED}Invalid input! Please enter a valid integer for ID.{self.RESET}")
+            time.sleep(1.5)
+            return None
         return id_
 
     def located(self, id_, name, quantity):
@@ -301,7 +306,7 @@ class UpdateItemUI:
         else:
             return False
 
-    def edit_interface(self, actual_name, actual_quantity):
+    def edit_interface(self, actual_name, actual_quantity, actual_price):
         print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
         print(f"{self.BOLD}{self.CIANO}{'      >>> DATA MODIFICATION'}{self.RESET}")
         print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
@@ -326,17 +331,29 @@ class UpdateItemUI:
         else:
             actual_quantity = actual_quantity
 
+        change_price = input(f"{self.GREEN} Change price '{actual_price}'? (y/n): {self.RESET}").strip().lower()
+        if change_price in ["s", "sim", "y", "yes"]:
+            try:
+                new_price = float(input(f"{self.GREEN} Enter new price: {self.RESET}").strip())
+                actual_price = new_price
+                print(f"{self.GREEN} Price updated successfully!{self.RESET}")
+            except ValueError:
+                print(f"{self.RED} Invalid input! Price must be a number. Price not changed.{self.RESET}")
+        else:
+            actual_price = actual_price
 
-        return actual_name, actual_quantity
+
+        return actual_name, actual_quantity, actual_price
     
 
-    def final_confirmation(self, id_, name, quantity, new_name, new_quantity):
+    def final_confirmation(self, id_, name, quantity, price, new_name, new_quantity, new_price):
             print(f"\n{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
             print(f"{self.BOLD}{self.GREEN}{'CHANGES SUMMARY'.center(self.LARGURA)}{self.RESET}")
             print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")  
             print(f" {self.GREEN}{'ID':<12}{self.YELLOW}: {self.RESET}{id_}")
             print(f" {self.GREEN}{'Name':<12}{self.YELLOW}: {self.RESET}{name:<20} -->  {self.CIANO}{new_name}{self.RESET}")
             print(f" {self.GREEN}{'Quantity':<12}{self.YELLOW}: {self.RESET}{str(quantity):<20} -->  {self.CIANO}{new_quantity}{self.RESET}")
+            print(f" {self.GREEN}{'Price':<12}{self.YELLOW}: {self.RESET}{str(price):<20} -->  {self.CIANO}{new_price}{self.RESET}")
             print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
             confirm = input(f" {self.YELLOW}Confirm changes? (y/n): {self.RESET}").strip().lower()
             

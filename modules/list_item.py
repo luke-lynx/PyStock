@@ -5,7 +5,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from python_db_manager import OpenDatabase
-import time
 import os
 
 
@@ -60,7 +59,6 @@ class ListItem:
         print(f"{self.BOLD}Total items listed: {len(self.sql_data_base_right)}{self.RESET}")
         print(f"{self.BLUE}{'=' * self.WIDTH}{self.RESET}")
         input(f"\n{self.CYAN}Press Enter to return to the menu...{self.RESET}")
-        time.sleep(3)
 
 if __name__ == "__main__":
     db = OpenDatabase()
