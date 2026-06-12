@@ -43,7 +43,7 @@ class MainSystem:
             if class_choice :
 
                 execute_class = class_choice(self.db)
-                
+
                 execute_class.execute()
             else:
                 print(f"\n{self.RED}✖ Invalid option! Please try again.{self.RESET}")

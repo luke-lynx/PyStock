@@ -1,8 +1,11 @@
 import sqlite3
+from pathlib import Path
 
 class OpenDatabase:
     def __init__(self):
-        self.db_name = 'pystock.db'
+        data_dir = Path(__file__).resolve().parent.parent / 'data'
+        data_dir.mkdir(exist_ok=True)
+        self.db_name = data_dir / 'pystock.db'
         self.connection = None
         self._cursor = None
         self.db_connect()
@@ -10,7 +13,7 @@ class OpenDatabase:
     
 
     def db_connect(self):
-        self.connection = sqlite3.connect(self.db_name)
+        self.connection = sqlite3.connect(str(self.db_name))
         self.connection.row_factory = sqlite3.Row
         self._cursor = self.connection.cursor()
 
@@ -41,7 +44,7 @@ class OpenDatabase:
         return self._cursor.fetchall()
 
     def db_search_item(self, search_term):
-        self._cursor.execute("SELECT * FROM stock WHERE name LIKE ?;", (f"%{search_term}%",))
+        self._cursor.execute("SELECT * FROM stock WHERE name LIKE ? OR id = ?;", (f"%{search_term}%", search_term))
         return self._cursor.fetchall()
 
     def db_remove_item(self, item_name):

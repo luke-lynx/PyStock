@@ -1,8 +1,6 @@
 __pycache__/
 *.pyc
 .env
-TODO.md
-README.txt
 tests_main.py
 assets/Pystock-font-image.png
 assets/Pystock-icon-snake.png
@@ -11,4 +9,6 @@ assets/Pystock-image-cyber-modern.png
 assets/Pystock-image-cyber.png
 assets/Pystock-image-modern.png
 assets/Pystock-image.png
-
+BUG_REPORT_REMOVE_ITEM.md
+COMMUNICATION_FIXES.md
+README_UPDATE_REPORT.md
