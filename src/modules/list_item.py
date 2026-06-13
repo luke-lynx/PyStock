@@ -1,12 +1,11 @@
 import sys
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Add parent directory to path to allow imports from root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from python_db_manager import OpenDatabase
-
 
 class ListItem:
     def __init__(self, data_base: OpenDatabase):

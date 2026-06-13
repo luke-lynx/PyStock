@@ -64,129 +64,32 @@ class AddItemUI:
         self.CIANO = "\033[96m"
         self.MAGENTA = "\033[95m"
         self.YELLOW = "\033[33m"
-        self._name = None
         self._quantity = 0
         self.LARGURA = 60
 
     def welcome_to_add_item(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        print("")
+        print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
+        print(
+            f"{self.BOLD}{'NEW ITEM REGISTRATION - PyStock'.center(self.LARGURA)}{self.RESET}"
+        )
+        print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
+        print(f"{self.BOLD}{"Please provide the item details below"}{self.RESET}")
+        print(
+            f"{self.GREEN}{"Tip: Type "}{self.RESET}{self.RED}'S'{self.RESET} {self.GREEN}{"at any prompt to cancel and return to menu."}{self.RESET}"
+        )
+        print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}\n")
 
-        while True:
+    def waiting_for_confirmation(self):
+        print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
+        print(f"{self.CIANO} [ STATUS ] Waiting for confirmation... {self.RESET}")
 
-
-            print("")
-            print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
-            print(
-                f"{self.BOLD}{'NEW ITEM REGISTRATION - PyStock'.center(self.LARGURA)}{self.RESET}"
-            )
-            print(f"{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
-            print(f"{self.BOLD}{"Please provide the item details below"}{self.RESET}")
-            print(
-                f"{self.GREEN}{"Tip: Type "}{self.RESET}{self.RED}'S'{self.RESET} {self.GREEN}{"at any prompt to cancel and return to menu."}{self.RESET}"
-            )
-            print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}\n")
-
-
-
-            item_name = input(f"{self.GREEN} > Item Name: _{self.RESET} ").strip()
-            if self.exit_to_menu(item_name):
-                return None
-
-
-
-            quantity_item = input(
-                f"{self.GREEN} > Initial Quantity: _{self.RESET} "
-            ).strip()
-            if self.exit_to_menu(quantity_item):
-                return None
-            
-            try:
-                quantity_item = int(quantity_item)
-                if quantity_item < 0:
-                    print(
-                        f"\n{self.RED}✖ Invalid quantity! Please enter a non-negative integer.{self.RESET}\n"
-                    )
-                    continue
-
-            except ValueError:
-                print(
-                    f"\n{self.RED}✖ Invalid input! Please enter a valid integer for quantity.{self.RESET}\n"
-                )
-                continue
-
-
-
-
-            price_item = input(
-                format(f"{self.GREEN} > Price per Unit: _{self.RESET} ")            ).strip()
-            if self.exit_to_menu(price_item):
-                return None
-            
-            try:
-                price_item = float(price_item)
-                if price_item <= 0:
-                    print(
-                        f"\n{self.RED}✖ Invalid price! Please enter a positive number for price.{self.RESET}\n"
-                    )
-                    continue
-            except ValueError:
-                print(
-                    f"\n{self.RED}✖ Invalid input! Please enter a valid number for price.{self.RESET}\n"
-                )
-                continue
-
-
-            print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
-            print(f"{self.CIANO} [ STATUS ] Wainting for confirmation... {self.RESET}")
-
-            confirm = (
-                input(
-                    f"{self.YELLOW} > Confirm adding '{item_name}' with quantity {quantity_item} and price {price_item}? ({self.GREEN}Y{self.RESET}{self.YELLOW}/{self.RESET}{self.RED}N{self.RESET}{self.YELLOW}): {self.RESET}"
-                )
-                .strip()
-                .lower()
-            )
-            if self.reject_option(confirm):
-                return None
-            print(
-                f"{self.GREEN}✔ Item '{item_name}' with quantity {quantity_item} and price {price_item} has been confirmed for addition!{self.RESET}\n"
-            )
-            print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
-            
-            time.sleep(1.5)
-
-            self._name = item_name
-            self._quantity = quantity_item
-            self._price = price_item
-            return True, self._name, self._quantity, self._price
-
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def quantity(self):
-        return self._quantity
-
-    def reject_option(self, input_value):
-
-        if input_value.lower() in ["n", "no", "nao", "não"]:
-            print(
-                f"\n{self.RED}Operation cancelled. Returning to main menu...{self.RESET}\n"
-            )
-            time.sleep(0.5)
-            return True
-
-    def exit_to_menu(self, input_value):
-
-        if input_value.lower() in ["s", "sim", "y", "yes"]:
-            print(
-                f"\n{self.RED}Operation cancelled. Returning to main menu...{self.RESET}\n"
-            )
-            time.sleep(0.5)
-            return True
-
-        return False
+    def confirmed_item_addition(self, item_name, quantity_item, price_item):
+        print(
+            f"{self.GREEN}✔ Item '{item_name}' with quantity {quantity_item} and price {price_item} has been confirmed for addition!{self.RESET}\n"
+        )
+        print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
+        time.sleep(1.5)
 
 class RemoveItemUI:
     def __init__(self):
@@ -200,8 +103,7 @@ class RemoveItemUI:
         self.YELLOW = "\033[33m"
         self.LARGURA = 60
 
-
-    def welcome_to_remove_item(self):
+    def welcome_to_remove_item_interface(self):
         print(f"\n{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
         print(
             f"{self.BOLD}{'REMOVE ITEM FROM INVENTORY'.center(self.LARGURA)}{self.RESET}"
@@ -213,48 +115,12 @@ class RemoveItemUI:
         print(f"{self.GREEN}{' Type S to cancel and return to Main Menu.'}{self.RESET}")
         print(f"{self.BLUE}{'=' * self.LARGURA}{self.RESET}")
 
-        while True:
-            item_name = input(
-                f"\n{self.GREEN} > Enter Item ID or Name: _{self.RESET} "
-            ).strip().lower()
-
-             
-            if self.exit_to_menu(item_name):
-                return None
-
-             
-            try:
-                return int(item_name)
-            except ValueError:
-                 
-                pass                
-
-             
-            return item_name
-
-
-    def confirm_remove_item(self, nome, qtd, id):
+    def confirm_remove_item_interface(self, nome, qtd, id):
         print(f"\n{self.BLUE}{'-' * self.LARGURA}{self.RESET}")
         print(f"{self.BOLD} [ STATUS ] Searching database...{self.RESET}")
         print(f"{self.BLUE}{'=' * self.LARGURA}")
         print(f"\n{self.GREEN}Item found: {self.YELLOW}'{nome}'{self.RESET} with quantity {self.YELLOW}{qtd}{self.RESET} (ID: {self.YELLOW}{id}{self.RESET})")
-        confirmation = input(
-            f"{self.RED}⚠ Are you sure you want to remove this item? This action cannot be undone! (y/n): {self.RESET}"
-        )
-        return confirmation.strip().lower()
 
-
-    def exit_to_menu(self, input_value):
-
-        if input_value.lower() in ["s", "sim", "y", "yes"]:
-            print(
-                f"\n{self.RED}Operation cancelled. Returning to main menu...{self.RESET}\n"
-            )
-            time.sleep(0.5)
-            return True
-
-        return False
-    
 class UpdateItemUI:
     def __init__(self):
         self.GREEN = "\033[92m"
@@ -361,7 +227,6 @@ class UpdateItemUI:
                 return True
             else:
                 return False
-
 
 if __name__ == "__main__":
     ui = MainPyStockUI()

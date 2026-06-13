@@ -14,7 +14,7 @@ class MainSystem:
         self.BOLD = "\033[1m"
         self.LARGURA = 60
         self.menu = MainPyStockUI()
-        self.db = OpenDatabase()
+        self.sql_data_base = OpenDatabase()
 
     def start(self):
         self.menu.welcome_to_program()
@@ -42,7 +42,7 @@ class MainSystem:
 
             if class_choice :
 
-                execute_class = class_choice(self.db)
+                execute_class = class_choice(self.sql_data_base)
 
                 execute_class.execute()
             else:
